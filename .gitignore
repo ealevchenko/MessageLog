@@ -22,11 +22,11 @@ bld/
 .nuget/
 # Roslyn cache directories
 *.ide/
-
+MLogs/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-
+MLogs/
 #NUNIT
 *.VisualState.xml
 TestResult.xml
