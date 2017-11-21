@@ -15,6 +15,7 @@ namespace EFLogs.Concrete
 
         public virtual DbSet<LogErrors> LogErrors { get; set; }
         public virtual DbSet<Logs> Logs { get; set; }
+        public virtual DbSet<LogEvents> LogEvents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

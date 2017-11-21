@@ -48,5 +48,20 @@ namespace EFLogs.Abstract
         long SaveError(Exception e);
 
         #endregion
+
+        #region LogEvents
+        IQueryable<LogEvents> LogEvents { get; }
+        IQueryable<LogEvents> GetLogEvents();
+        LogEvents GetLogEvent(int id);
+        IQueryable<LogEvents> GetLogEvents(DateTime start, DateTime stop);
+        IQueryable<LogEvents> GetLogEventsOfServices(DateTime start, DateTime stop, int? id_service);
+        IQueryable<LogEvents> GetLogEventsOfEventID(DateTime start, DateTime stop, int? event_id);
+        IQueryable<LogEvents> GetLogEvents(DateTime start, DateTime stop, int? id_service, int? event_id);
+        long SaveLogEvents(LogEvents LogEvents);
+        LogEvents DeleteLogEvents(long ID);
+
+        long SaveLogEvents(int? id_services, int? id_eventID, string events, string status);
+        long SaveLogEvents(int? id_services, int? id_eventID, string events, EventStatus status);
+        #endregion
     }
 }

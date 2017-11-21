@@ -55,6 +55,7 @@
     <Compile Include="Abstract\IDBLog.cs" />
     <Compile Include="Concrete\EFLog.cs" />
     <Compile Include="Entities\LogErrors.cs" />
+    <Compile Include="Entities\LogEvents.cs" />
     <Compile Include="Entities\Logs.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

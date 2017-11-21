@@ -166,5 +166,106 @@ namespace MessageLog
         }
 
         #endregion
+
+        #region LogEvent
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <param name="id_services"></param>
+        /// <param name="id_eventID"></param>
+        /// <returns></returns>
+        public static long SaveEvents(this string events, string status, int? id_services, int? id_eventID)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(id_services, id_eventID, events, status);
+        }
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <param name="id_eventID"></param>
+        /// <returns></returns>
+        public static long SaveEventsOfeventID(this string events, string status, int? id_eventID)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(null, id_eventID, events, status);
+        }
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <param name="id_services"></param>
+        /// <returns></returns>
+        public static long SaveEventsOfServices(this string events, string status, int? id_services)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(id_services, null, events, status);
+        }
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public static long SaveEvents(this string events, string status)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(null, null, events, status);
+        }
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <param name="id_services"></param>
+        /// <param name="id_eventID"></param>
+        /// <returns></returns>
+        public static long SaveEvents(this string events, EventStatus status, int? id_services, int? id_eventID)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(id_services, id_eventID, events, status);
+        }
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <param name="id_eventID"></param>
+        /// <returns></returns>
+        public static long SaveEventsOfeventID(this string events, EventStatus status, int? id_eventID)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(null, id_eventID, events, status);
+        }
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <param name="id_services"></param>
+        /// <returns></returns>
+        public static long SaveEventsOfServices(this string events, EventStatus status, int? id_services)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(id_services, null, events, status);
+        }
+        /// <summary>
+        /// Сохранить событие 
+        /// </summary>
+        /// <param name="events"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public static long SaveEvents(this string events, EventStatus status)
+        {
+            EFLog eflog = new EFLog(_blog);
+            return eflog.SaveLogEvents(null, null, events, status);
+        }
+        #endregion
+
+
     }
 }
