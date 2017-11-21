@@ -61,7 +61,6 @@ namespace EFLogs.Abstract
         LogEvents DeleteLogEvents(long ID);
 
         long SaveLogEvents(int? id_services, int? id_eventID, string events, string status);
-        long SaveLogEvents(int? id_services, int? id_eventID, string events, EventStatus status);
         #endregion
     }
 }

@@ -15,13 +15,6 @@ namespace EFLogs.Concrete
         Information = 0, Warning = 1, Error = 2, Critical = 3
     }
 
-    public enum EventStatus : int
-    {
-        Error = -1,
-        No_Actions = 0,
-        Ok = 1,
-    }
-
     public class EFLog : IDBLog
     {
         protected EFDbContext context = new EFDbContext();
@@ -657,78 +650,6 @@ namespace EFLogs.Concrete
                 Status = status,
             });
         }
-        /// <summary>
-        /// Добавить событие
-        /// </summary>
-        /// <param name="id_services"></param>
-        /// <param name="id_eventID"></param>
-        /// <param name="events"></param>
-        /// <param name="status"></param>
-        /// <returns></returns>
-        public long SaveLogEvents(int? id_services, int? id_eventID, string events, EventStatus status)
-        {
-            return SaveLogEvents(id_services, id_eventID, events, status.ToString());
-        }
-        ///// <summary>
-        ///// Добавить событие
-        ///// </summary>
-        ///// <param name="services"></param>
-        ///// <param name="eventID"></param>
-        ///// <param name="events"></param>
-        ///// <param name="status"></param>
-        ///// <returns></returns>
-        //public long SaveLogEvents(service? services, eventID? eventID, string events, string status)
-        //{
-        //    int? id_services = null;
-        //    if (services != null) id_services = (int)services;
-        //    int? id_eventID = null;
-        //    if (eventID != null) id_eventID = (int)eventID;
-        //    return SaveLogEvents(id_services, id_eventID, events, status);
-        //}
-        ///// <summary>
-        ///// Добавить событие
-        ///// </summary>
-        ///// <param name="services"></param>
-        ///// <param name="eventID"></param>
-        ///// <param name="events"></param>
-        ///// <param name="status"></param>
-        ///// <returns></returns>
-        //public long SaveLogEvents(service? services, eventID? eventID, string events, EventStatus status)
-        //{
-        //    return SaveLogEvents(services, eventID, events, status.ToString());
-        //}
-        /// <summary>
-        /// Добавить событие
-        /// </summary>
-        /// <param name="events"></param>
-        /// <param name="status"></param>
-        /// <returns></returns>
-        //public long SaveLogEvents(string events, string status)
-        //{
-        //    return SaveLogEvents(new LogEvents()
-        //    {
-        //        ID = 0,
-        //        DateTime = DateTime.Now,
-        //        UserName = System.Environment.UserDomainName + @"\" + System.Environment.UserName,
-        //        UserHostName = System.Environment.MachineName,
-        //        UserHostAddress = GetIP(),
-        //        PhysicalPath = System.Environment.CommandLine,
-        //        Service = null,
-        //        EventID = null,
-        //        Event = events,
-        //        Status = status,
-        //    });
-        //}
-        ///// <summary>
-        ///// Добавить событие
-        ///// </summary>
-        ///// <param name="events"></param>
-        ///// <param name="status"></param>
-        ///// <returns></returns>
-        //public long SaveLogEvents(string events, EventStatus status)
-        //{
-        //    return SaveLogEvents(events, status.ToString());
-        //}
         #endregion
 
         #endregion

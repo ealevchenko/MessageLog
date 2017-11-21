@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace MessageLog
 {
+    public enum EventStatus : int
+    {
+        Error = -1,
+        No_Actions = 0,
+        Ok = 1,
+    }
+    
     public static class DBLogs
     {
         private static bool _blog = false;
@@ -227,7 +234,7 @@ namespace MessageLog
         public static long SaveEvents(this string events, EventStatus status, int? id_services, int? id_eventID)
         {
             EFLog eflog = new EFLog(_blog);
-            return eflog.SaveLogEvents(id_services, id_eventID, events, status);
+            return eflog.SaveLogEvents(id_services, id_eventID, events, status.ToString());
         }
         /// <summary>
         /// Сохранить событие 
@@ -239,7 +246,7 @@ namespace MessageLog
         public static long SaveEventsOfeventID(this string events, EventStatus status, int? id_eventID)
         {
             EFLog eflog = new EFLog(_blog);
-            return eflog.SaveLogEvents(null, id_eventID, events, status);
+            return eflog.SaveLogEvents(null, id_eventID, events, status.ToString());
         }
         /// <summary>
         /// Сохранить событие 
@@ -251,7 +258,7 @@ namespace MessageLog
         public static long SaveEventsOfServices(this string events, EventStatus status, int? id_services)
         {
             EFLog eflog = new EFLog(_blog);
-            return eflog.SaveLogEvents(id_services, null, events, status);
+            return eflog.SaveLogEvents(id_services, null, events, status.ToString());
         }
         /// <summary>
         /// Сохранить событие 
@@ -262,7 +269,7 @@ namespace MessageLog
         public static long SaveEvents(this string events, EventStatus status)
         {
             EFLog eflog = new EFLog(_blog);
-            return eflog.SaveLogEvents(null, null, events, status);
+            return eflog.SaveLogEvents(null, null, events, status.ToString());
         }
         #endregion
 
