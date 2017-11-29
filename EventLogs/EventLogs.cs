@@ -33,8 +33,11 @@ namespace MessageLog
         static public  bool InitEventLogs(string eventSourceName, string logName) {
             try
             {
+                //Exception ex = new Exception("test");
+                //ex.SaveErrorMethod(String.Format("InitEventLogs (EventLogs)"), _blog);                
                 if (!System.Diagnostics.EventLog.SourceExists(eventSourceName))
                 {
+                    //ex.SaveErrorMethod(String.Format("CreateEventSource (EventLogs) eventSourceName={0},logName={1}", eventSourceName, logName), _blog);
                     System.Diagnostics.EventLog.CreateEventSource(eventSourceName, logName);
                 }
                 elog = new System.Diagnostics.EventLog();
@@ -42,6 +45,7 @@ namespace MessageLog
                 _eventSourceName = eventSourceName;
                 _logName = logName;
                 initLog = true;
+                //ex.SaveErrorMethod(String.Format("Ok - InitEventLogs (EventLogs) elog.Source={0}, elog.Log={1}", elog.Source, elog.Log), _blog);
                 return true;
             }
             catch (Exception e)
@@ -60,6 +64,7 @@ namespace MessageLog
         static public bool InitEventLogs() {
             try
             {
+
                 if (!System.Diagnostics.EventLog.SourceExists(_eventSourceName))
                 {
                     System.Diagnostics.EventLog.CreateEventSource(_eventSourceName, _logName);
@@ -67,6 +72,7 @@ namespace MessageLog
                 elog = new System.Diagnostics.EventLog();
                 elog.Source = _eventSourceName; elog.Log = _logName;
                 initLog = true;
+
                 return true;
             }
             catch (Exception e)
