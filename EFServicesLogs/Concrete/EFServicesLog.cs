@@ -151,6 +151,33 @@ namespace EFServicesLogs.Concrete
                 return null;
             }
         }
+        /// <summary>
+        /// Проверка работает сервис
+        /// </summary>
+        /// <param name="id_service"></param>
+        /// <param name="dt"></param>
+        /// <param name="period"></param>
+        /// <returns></returns>
+        public bool IsRunServices(int id_service, DateTime dt, int period)
+        {
+            try
+            {
+                DateTime start = dt.AddSeconds(-1*period);
+                LogServices log = GetLogServices().Where(s => s.service == id_service & s.start >= start & s.start <= dt).FirstOrDefault();
+
+                return log!= null ? true : false;
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("IsRunServices(id_service={0}, dt={1}, stop={2})", id_service, dt, period), blog);
+                return false;
+            }
+        }
+
+        public bool IsRunServices(int id_service, int period)
+        {
+            return IsRunServices(id_service, DateTime.Now, period);
+        }
 
         #endregion
 
