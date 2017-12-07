@@ -124,5 +124,18 @@ namespace MessageLog
                 return -1;
             }
         }
+
+        public static bool IsRunServices(this int id_service, int period) {
+            try
+            {
+                EFServicesLog efsl = new EFServicesLog(_blog);
+                return efsl.IsRunServices(id_service, period);
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("IsRunServices(id_service={0}, period={1})", id_service, period), _blog);
+                return false;
+            }
+        }
     }
 }
