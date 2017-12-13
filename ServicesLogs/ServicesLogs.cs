@@ -124,7 +124,12 @@ namespace MessageLog
                 return -1;
             }
         }
-
+        /// <summary>
+        /// Проверить выполнение службы за указанный период
+        /// </summary>
+        /// <param name="id_service"></param>
+        /// <param name="period"></param>
+        /// <returns></returns>
         public static bool IsRunServices(this int id_service, int period) {
             try
             {
@@ -135,6 +140,25 @@ namespace MessageLog
             {
                 e.SaveErrorMethod(String.Format("IsRunServices(id_service={0}, period={1})", id_service, period), _blog);
                 return false;
+            }
+        }
+        /// <summary>
+        /// Вернуть код последнего выполнения службы.
+        /// </summary>
+        /// <param name="id_service"></param>
+        /// <param name="period"></param>
+        /// <returns></returns>
+        public static int? GetCodeReturnServices(this int id_service, int period)
+        {
+            try
+            {
+                EFServicesLog efsl = new EFServicesLog(_blog);
+                return efsl.GetCodeReturnServices(id_service, period);
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("GetCodeReturnServices(id_service={0}, period={1})", id_service, period), _blog);
+                return null;
             }
         }
     }
