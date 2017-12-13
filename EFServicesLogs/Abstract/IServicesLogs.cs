@@ -25,6 +25,10 @@ namespace EFServicesLogs.Abstract
         int SaveLogStatusServices(LogStatusServices LogStatusServices);
         LogStatusServices DeleteLogStatusServices(int id);
         LogStatusServices GetLogStatusServices(int id_service);
+        bool IsRunServices(int id_service, DateTime dt, int period);
+        bool IsRunServices(int id_service, int period);
+        int? GetCodeReturnServices(int id_service, DateTime dt, int period);
+        int? GetCodeReturnServices(int id_service, int period);
         #endregion
     }
 }

@@ -178,6 +178,38 @@ namespace EFServicesLogs.Concrete
         {
             return IsRunServices(id_service, DateTime.Now, period);
         }
+        /// <summary>
+        /// Вернуть код последнего выполнения сервиса
+        /// </summary>
+        /// <param name="id_service"></param>
+        /// <param name="dt"></param>
+        /// <param name="period"></param>
+        /// <returns></returns>
+        public int? GetCodeReturnServices(int id_service, DateTime dt, int period)
+        {
+            try
+            {
+                DateTime start = dt.AddSeconds(-1*period);
+                LogServices log = GetLogServices().Where(s => s.service == id_service & s.start >= start & s.start <= dt).OrderByDescending(s => s.id).FirstOrDefault();
+
+                return log != null ? log.code_return : null;
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("GetCodeReturnServices(id_service={0}, dt={1}, stop={2})", id_service, dt, period), blog);
+                return null;
+            }
+        }
+        /// <summary>
+        /// Вернуть код последнего выполнения сервиса
+        /// </summary>
+        /// <param name="id_service"></param>
+        /// <param name="period"></param>
+        /// <returns></returns>
+        public int? GetCodeReturnServices(int id_service, int period)
+        {
+            return GetCodeReturnServices(id_service, DateTime.Now, period);
+        }
 
         #endregion
 
