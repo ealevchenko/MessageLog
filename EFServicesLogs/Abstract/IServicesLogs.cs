@@ -15,6 +15,7 @@ namespace EFServicesLogs.Abstract
         long SaveLogServices(LogServices LogServices);
         LogServices DeleteLogServices(long id);
         IQueryable<LogServices> GetLogServices(int id_service);
+        IQueryable<LogServices> GetLogServices(DateTime start, DateTime stop);
         IQueryable<LogServices> GetLogServices(int id_service, DateTime start, DateTime stop);
 
         #endregion

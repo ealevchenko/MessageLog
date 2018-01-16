@@ -133,6 +133,24 @@ namespace EFServicesLogs.Concrete
             }
         }
         /// <summary>
+        /// Выборка по времени
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="stop"></param>
+        /// <returns></returns>
+        public IQueryable<LogServices> GetLogServices(DateTime start, DateTime stop)
+        {
+            try
+            {
+                return GetLogServices().Where(l => l.start >= start & l.start < stop);
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("GetLogServices(start={0}, stop={1})", start,stop), blog);
+                return null;
+            }
+        }
+        /// <summary>
         /// Вернуть лог сервиса за период
         /// </summary>
         /// <param name="id_service"></param>
