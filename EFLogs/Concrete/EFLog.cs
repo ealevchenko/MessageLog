@@ -390,6 +390,46 @@ namespace EFLogs.Concrete
             }
             return dbEntry;
         }
+
+        public IQueryable<LogErrors> GetLogErrorsOfService(int service) { 
+            try
+            {
+                return GetLogErrors().Where(l => l.Service == service);
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("GetLogErrorsOfService(service={0})", service), blog);
+                return null;
+            }        
+        }
+
+        public IQueryable<LogErrors> GetLogErrors(int service, DateTime start, DateTime stop)
+        {
+            try
+            {
+                return GetLogErrorsOfService(service).Where(l => l.DateTime >= start & l.DateTime < stop);
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("GetLogErrors(id_service={0}, start={1}, stop={2})", service, start, stop), blog);
+                return null;
+            }
+        }
+
+        public IQueryable<LogErrors> GetLogErrors(DateTime start, DateTime stop)
+        {
+            try
+            {
+                return GetLogErrors().Where(l => l.DateTime >= start & l.DateTime < stop);
+            }
+            catch (Exception e)
+            {
+                e.SaveErrorMethod(String.Format("GetLogErrors(start={0}, stop={1})", start, stop), blog);
+                return null;
+            }
+        }
+
+
         #endregion
 
         #region Exception

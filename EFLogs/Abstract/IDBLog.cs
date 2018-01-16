@@ -41,6 +41,9 @@ namespace EFLogs.Abstract
         LogErrors GetLogErrors(long id);
         long SaveLogErrors(LogErrors LogErrors);
         LogErrors DeleteLogErrors(long ID);
+        IQueryable<LogErrors> GetLogErrorsOfService(int service);
+        IQueryable<LogErrors> GetLogErrors(int service, DateTime start, DateTime stop);
+        IQueryable<LogErrors> GetLogErrors(DateTime start, DateTime stop);
 
         long SaveError(Exception e, string user_message, int? id_services, int? id_eventID);
         long SaveError(Exception e, int? id_services, int? id_eventID);
